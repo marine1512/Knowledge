@@ -1,0 +1,10 @@
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+app_login_check:
+    path: /login_check
+
+_security_logout:
+    resource: security.route_loader.logout
+    type: service

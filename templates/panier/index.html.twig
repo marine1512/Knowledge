@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/formation/panier.css') }}?v=1.0">
+{% endblock %}
+
+{% block body %}
+<h1>Votre Panier</h1>
+        {% for key, item in cart %}
+    <div class="cart-item">
+        <div class="cart-details">
+            <h3>{{ item.nom }}</h3>
+            <p>Prix : {{ item.prix }} €</p>
+        </div>
+        <div class="cart-actions">
+            <!-- Formulaire pour supprimer l'article -->
+            <form action="{{ path('cart_remove', { id: key }) }}" method="post">
+                <button type="submit"><b>Supprimer</b></button>
+            </form>
+        </div>
+    </div>
+    {% else %}
+        <p class="vide">Votre panier est vide.</p>
+    {% endfor %}
+
+<div class='cart'>
+    <p><b>TOTAL :</b> {{ totalPrice }} €</p>
+    <div class="boutons">
+        {% if cart is not empty %}
+            <a class='btn' href="{{ path('app_checkout')}}" class="btn btn-primary"><b>Payer</b></a>
+            <a class='btn2' href="{{ path('home')}}" class="btn btn-primary"><b>Retour à l'accueil</b></a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

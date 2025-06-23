@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/admin/admin.css') }}?v=1.0">
+{% endblock %}
+
+{% block title %}Créer un thème{% endblock %}
+
+{% block body %}
+<h1>Créer un thème</h1>
+
+<form method="post">
+    <label for="nom">Nom :</label>
+    <input type="text" id="nom" name="nom" required>
+    <label for="image"></label>
+    <input type="file" id="image" name="image" required class="btn2">
+    <button type="submit" class='btn'>Créer</button>
+</form>
+{% endblock %}

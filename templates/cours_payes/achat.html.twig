@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+{{ parent() }}
+   <link rel="stylesheet" href="{{ asset('css/formation/achat.css') }}?v=1.0">
+{% endblock %}
+
+
+{% block body %}
+<h1>Ma liste des achats</h1>
+
+    {% if cursus is empty %}
+        <p>Vous n’avez encore acheté aucun cursus.</p>
+    {% else %}    
+    <h2 class="h2">Mes Cursus</h2>
+    <ul class="achat-list">
+        {% for achat in cursus %}
+            <li>
+                {{ achat.cursus.nom }}
+                <p class='validated-cursus'>{{ achat.cursus.isValidated ? '✔ Validé' : '❌ Non Validé' }}</p>
+                {% if achat.isValidated %}
+                    <span class="validated-cursus">✔ Cursus Validé</span>
+                {% endif %}
+            </li>
+        {% else %}
+            <li>Aucun cursus trouvé.</li>
+        {% endfor %}
+    </ul>
+    <h2 class='h2'>Mes Leçons</h2>
+    <ul class='achat-list'>
+        {% for achat in lecon %}
+            <li>
+                {{ achat.lecon.nom }}
+                <div>
+                    <a href="{{ path('contenu_lecon', { id: achat.lecon.id }) }}" class="btn">Voir</a>
+                    {% if achat.isValidated %}
+                        <span class="validated">✔ Validée</span>
+                    {% endif %}
+                </div>
+            </li>
+        {% else %}
+            <li>Aucune leçon trouvée.</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+{% endblock %}

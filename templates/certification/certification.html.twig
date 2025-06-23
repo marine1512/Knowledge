@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+{{ parent() }}
+<link rel="stylesheet" href="{{ asset('css/certification/certification.css') }}?v=1.0">
+{% endblock %}
+
+{% block body %}
+<header class="certification-header">
+    <h1 class="h2 text-center">Vos Certifications « Knowledge Learning »</h1>
+</header>
+
+<section class="certification-details">
+    {% if certifications is not empty %}
+        {% for certification in certifications %}
+            <div class="certification-card">
+                <h2 class="success-title">Félicitations ! </h2>
+                <p class="certification-message">
+                    Vous avez obtenu une certification pour le thème : 
+                    <strong class="blue-theme">« {{ certification.theme.nom }} »</strong>.
+                </p>
+                <p class="certification-date">
+                    Date de certification : <span class="certification-date-value">{{ certification.createdAt|date('d/m/Y') }}</span>
+                </p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="no-certification-card">
+            <h2 class="no-certification-title">Pas encore de certification</h2>
+            <p class="encouragement">
+                Vous devez valider tous les cursus requis avant d'obtenir une certification.
+                Continuez vos efforts, vous êtes sur la bonne voie ! 🌟
+            </p>
+        </div>
+    {% endif %}
+</section>
+{% endblock %}

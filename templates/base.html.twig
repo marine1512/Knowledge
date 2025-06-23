@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}KNOWLEDGE{% endblock %}</title>
+    {% block stylesheets %}
+   <link rel="stylesheet" href="{{ asset('css/header-footer.css') }}?v=1.0">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/Favicon.png') }}">
+</head>
+    <nav>
+    <a href="{{ path('home') }}">
+        <img src="{{ asset('images/Logo.jpg') }}" alt="Logo du site" class="form-image">
+    </a>
+    <ul>
+        <li><a href="{{ path('home') }}">Accueil</a></li>
+        {% if app.user %}
+            <li><a href="{{ path('user_achat') }}">Mes achats</a></li>
+            <li><a href="{{ path('certification') }}">Mes certifications</a></li>
+            <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
+        {% else %}
+            <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+        {% endif %}
+    </ul>
+</nav>
+    <main>
+       {% block body %}
+        {% endblock %}
+    </main>
+<footer class="site-footer">
+    <h3>Knowledge Learning</h3>
+    <ul>
+        <li><a href="{{ path('home') }}">Accueil</a></li>
+        {% if app.user %}
+            <li><a href="{{ path('user_achat') }}">Mes achats</a></li>
+            <li><a href="{{ path('certification') }}">Mes certifications</a></li>
+            <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
+        {% else %}
+            <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+        {% endif %}
+        </ul>
+        {% if is_granted('ROLE_ADMIN') %}
+            <p class="blue"><a href="{{ path('admin') }}">Accès au tableau de bord administrateur</a></p>
+        {% endif %}
+    </ul>
+</footer>
+</html>

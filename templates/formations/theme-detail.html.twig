@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+{{ parent() }}
+   <link rel="stylesheet" href="{{ asset('css/formation/theme.css') }}?v=1.0">
+{% endblock %}
+
+{% block title %}Détails du Thème : {{ theme.nom }}{% endblock %}
+
+{% block body %}
+    <div class="theme-container">
+        <header class="theme-header">
+            <h1 class="theme-title">Thème : <span>{{ theme.nom }}</span></h1>
+            <div class="theme-image-container">
+                <img src="{{ asset(theme.image) }}" alt="Image de {{ theme.nom }}" class="theme-image"/>
+            </div>
+        </header>
+
+        <section class="cursus-container">
+            <h2 class="cursus-title">Liste des cursus associés :</h2>
+
+            {% if cursus is not empty %}
+                <ul class="cursus-list">
+                    {% for cursus in cursus %}
+                        <li class="cursus-item">
+                            <a href="{{ path('cursus_lecon', { id: cursus.id }) }}" class="cursus-link">
+                                <span class="cursus-name">{{ cursus.nom }}</span> - 
+                                <span class="cursus-price">{{ cursus.prix }} €</span>
+                            </a>                        
+                            {% if app.user and app.user.isActive %}
+                                <form method="post" action="{{ path('cart_add_cursus', { id: cursus.id }) }}" class="add-to-cart-form">
+                                    <button type="submit" class="btn btn-primary">Ajouter au panier</button>
+                                </form>
+                            {% endif %}
+                        </li>      
+
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="cursus-empty">Aucun cursus associé à ce thème.</p>
+            {% endif %}
+
+            <div class="back-button">
+                <a href="{{ path('home') }}" class="btn btn-primary">Retour à la liste des thèmes</a>
+            </div>
+        </section>
+    </div>
+{% endblock %}

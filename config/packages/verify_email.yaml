@@ -1,0 +1,2 @@
+symfonycasts_verify_email:
+    lifetime: 3600 # Durée maximale (en secondes) pour que le lien de vérification soit valide (1 heure ici)

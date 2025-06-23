@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/admin/admin.css') }}?v=1.0">
+{% endblock %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+    <h1>Liste des utilisateurs</h1>
+
+    {% if users is empty %}
+        <p>Aucun utilisateur trouvé.</p>
+    {% else %}
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Rôles</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.roles|join(', ') }}</td>
+                        <td>
+                            <button class='btn'><a href="{{ path('user_edit', { id: user.id }) }}">Modifier</a></buuton>
+                            <form method="post" action="{{ path('user_delete', { id: user.id }) }}"
+                                  onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+                                <button type="submit" class='btn'>Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    <button class='btn'><a href="{{ path('user_new') }}">Créer un nouvel utilisateur</a></button>
+    <button class='btn'><a href="{{ path('admin') }}">Retour au tableau de bord administrateur</a></button>
+{% endblock %}

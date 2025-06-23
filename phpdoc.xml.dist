@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdocumentor
+    configVersion="3"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://docs.phpdoc.org/phpdoc.xsd"
+>
+
+    <title>Documentation Application</title>
+
+    <paths>
+        <output>docs/api</output>
+    </paths>
+
+    <settings>
+        <default-package-name>
+            <name>Application</name>
+        </default-package-name>
+    </settings>
+
+    <versions>
+        <version number="1.0.0">
+            <api>
+                <source>
+                    <dsn>src/Application</dsn>
+                </source>
+            </api>
+        </version>
+    </versions>
+
+</phpdocumentor>
+

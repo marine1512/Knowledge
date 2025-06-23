@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/admin/admin.css') }}?v=1.0">
+{% endblock %}
+
+{% block title %}Liste des thèmes{% endblock %}
+
+{% block body %}
+<h1>Liste des thèmes</h1>
+
+<a href="{{ path('new') }}" class='btn'>Créer un thème</a>
+
+<table class='table'>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Image</th>
+            <th>Nom</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for theme in themes %}
+        <tr>
+            <td>{{ theme.id }}</td>
+            <td>{{ theme.image }}</td>
+            <td>{{ theme.nom }}</td>
+            <td>
+                <a href="{{ path('edit', { id: theme.id }) }}"class='btn'>Modifier</a>
+                <form method="post" action="{{ path('delete', { id: theme.id }) }}" style="display:inline;">
+                    <button type="submit" class='btn'>Supprimer</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+    <button class='btn'><a href="{{ path('admin') }}">Retour au tableau de bord administrateur</a></button>
+{% endblock %}

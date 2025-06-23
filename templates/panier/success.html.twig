@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/formation/panier.css') }}?v=1.0">
+{% endblock %}
+
+{% block body %}
+    <h1>Paiement réussi</h1>
+    <p>{{ message }}</p>
+    <a href="{{ path('home') }}" class="btn">Retour à l'accueil</a>
+{% endblock %}

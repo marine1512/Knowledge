@@ -1,0 +1,94 @@
+body{
+    background-color: rgb(255, 255, 255);
+    font-family: Comic Sans MS, sans-serif;
+    height: 100%;
+}
+
+main{
+    flex: 1;
+    padding-top: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 1em;
+}
+
+/* Section du header */
+.certification-header {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Section principale */
+
+.certification-card {
+    text-align: center;
+    background-color: #f1f8fc;
+    margin-bottom: 2em;
+    padding: 20px;
+    border: 8px solid #0074c7;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.certification-card .success-title {
+    font-size: 24px;
+    color: #00497c;
+    margin-bottom: 15px;
+}
+
+.certification-card .certification-message {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #00497c;
+}
+
+.certification-card .blue-theme {
+    color: #007bff; 
+}
+
+.certification-card .certification-date-value {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Pas de certification - message */
+.no-certification-card {
+    text-align: center;
+    background-color: #f8d7da;
+    padding: 20px;
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+}
+
+.no-certification-card .no-certification-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.no-certification-card .encouragement {
+    font-size: 16px;
+    font-style: italic;
+    color: #856404;
+}
+
+/* Global : typographie */
+h1, h2, .h2 {
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+}
+
+p {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+.text-center {
+    text-align: center;
+}

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/admin/admin.css') }}?v=1.0">
+{% endblock %}
+
+{% block title %}Créer un utilisateur{% endblock %}
+
+{% block body %}
+    <h1>Créer un nouvel utilisateur</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit" class='btn' >Créer</button>
+    {{ form_end(form) }}
+
+    <button class='btn'><a href="{{ path('app_user_index') }}">Retour à la liste des utilisateurs</a></button>
+{% endblock %}

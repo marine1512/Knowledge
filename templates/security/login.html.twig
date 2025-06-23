@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+{{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/body.css') }}?v=1.0">
+{% endblock %}
+
+{% block body %}
+
+{% if error %}
+    <div class="alert alert-danger">
+        {{ error.messageKey|trans(error.messageData, 'security') }}
+    </div>
+{% endif %}
+
+<form method="post" action="{{ path('app_login_check') }}">
+    <h1>Se connecter</h1>
+    <div class="login">
+        <label>Nom d'utilisateur : </label>
+        <input type="text" name="username">
+        <label>Mot de passe : </label>
+        <input type="password" name="password">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        <button type="submit">Se connecter</button>
+        <br>
+        <p>Mot de passe oublié</p>
+    </div>
+    <p>Pas encore inscrit ?</p> 
+    <a href="{{ path('app_register') }}" class="btn-secondary">Créer un compte</a>
+</form>
+{% endblock %}

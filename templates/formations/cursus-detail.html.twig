@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+{{ parent() }}
+   <link rel="stylesheet" href="{{ asset('css/formation/cursus.css') }}?v=1.0">
+{% endblock %}
+
+{% block title %}Détails du Cursus : {{ cursus.nom }}{% endblock %}
+
+{% block body %}
+    <div class="cursus-container">
+        <h1 class="cursus-title">Détails du Cursus : <span>{{ cursus.nom }}</span></h1>
+
+        <div class="lecons-container">
+            <h2 class="lecons-title">Liste des leçons associées :</h2>
+
+            {% if cursus.lecons is not empty %}
+                <ul class="lecons-list">
+                    {% for lecon in cursus.lecons %}
+                        <li class="lecon-item">
+                            <div class="lecon-details">
+                                <strong class="lecon-name">{{ lecon.nom }}</strong>
+                                <span class="lecon-price">{{ lecon.prix }}€</span>                        
+                                {% if app.user and app.user.isActive %}
+                                    <form method="post" action="{{ path('cart_add_lecon', { id: lecon.id }) }}" class="add-to-cart-form">
+                                        <button type="submit" class="btn btn-primary">Ajouter au panier</button>
+                                    </form>
+                                {% endif %}
+                            </div>
+                        </li>
+
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="no-lecons">Aucune leçon disponible pour ce cursus.</p>
+            {% endif %}
+        </div>
+
+        <div class="back-button-container">
+            <a href="{{ path('product_detail', { id: cursus.theme.id }) }}" class="btn btn-primary">Retour à la liste des cursus</a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/admin/admin.css') }}?v=1.0">
+{% endblock %}
+
+{% block title %}Modifier une leçon{% endblock %}
+
+{% block body %}
+    <h1>Modifier une leçon</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit" class='btn'>Enregistrer</button>
+    {{ form_end(form) }}
+
+    <button class='btn'><a href="{{ path('lecon_index') }}">Retour à la liste des leçons</a></button>
+{% endblock %}

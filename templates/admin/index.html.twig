@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/admin/admin.css') }}?v=1.0">
+{% endblock %}
+
+{% block title %}Tableau de bord administrateur{% endblock %}
+
+{% block body %}
+<h1>Tableau de bord administrateur</h1>
+<div class="admin-container">
+    <img src="{{ asset('images/utilisateur.png') }}" alt="User" class="admin-image">
+    <div class='admin'>
+        <ul>
+            <li><a href="{{ path('app_user_index') }}">Gérer les utilisateurs</a></li>
+            <li><a href="{{ path('theme') }}">Gérer les thèmes</a></li>
+            <li><a href="{{ path('cursus_index') }}">Gérer les cursus</a></li>
+            <li><a href="{{ path('lecon_index') }}">Gérer les leçons</a></li>
+        </ul>
+    </div>
+    <img src="{{ asset('images/surveiller.png') }}" alt="Formation" class="admin-image">
+</div>
+{% endblock %}

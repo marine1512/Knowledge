@@ -1,0 +1,108 @@
+body{
+    background-color: rgb(255, 255, 255);
+    font-family: Comic Sans MS, sans-serif;
+}
+
+main{
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+/* Conteneur de la section des produits */
+.cart-item {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+.cart-image img {
+    width: 100px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.cart-details {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.cart-details h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.cart-details p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.cart-actions {
+    margin-left: 20px;
+}
+
+.cart-actions button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+.cart{
+    display: flex;
+    margin: 20px;
+    gap: 20px;
+    margin-left: auto; 
+}
+
+p{
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+
+.boutons{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn {
+    all: unset;
+    cursor: pointer;
+    border: 1px solid black;
+    padding: 5px;
+    background-color: #007bff80;
+    border-radius: 4px;
+}
+
+.btn2{
+    all: unset;
+    cursor: pointer;
+    border: 1px solid black;
+    padding: 5px;
+    background-color: #3b272747;
+    border-radius: 4px;
+}
+
+.vide{
+    margin-top: 2em;
+}

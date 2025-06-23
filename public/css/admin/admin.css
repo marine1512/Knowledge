@@ -1,0 +1,114 @@
+body{
+    background-color: rgb(255, 255, 255);
+    font-family: Comic Sans MS, sans-serif;
+    height: 100%;
+}
+
+main{
+    flex: 1;
+    display: flex;
+    padding: 1em;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 {
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 1em;
+}
+
+/* Admin Container */
+
+.admin-container {
+    display: flex;
+    gap: 10em;
+    align-items: center;
+    justify-content: center;
+}
+.admin-image {
+    width: 7em;
+}
+
+.admin {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+
+}
+
+.admin ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
+    align-items: center;
+}
+
+.admin ul li {
+    white-space: nowrap;
+    background-color: #f1f8fc;
+    border: 1px solid #0074c7;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.admin ul li:hover {
+    background-color: #0074c7;
+}
+.admin ul li a {
+    text-decoration: none; 
+    color: #00497c ; 
+}
+
+.admin ul li a:hover {
+    color: white;
+}
+
+.table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+        background-color: #ffffff;
+    border: 3px solid #0074c7;
+    border-radius: 5px;
+}
+
+.table th, .table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+.btn {
+    all: unset;
+    width: fit-content;
+    cursor: pointer;
+    border: 1px solid black;
+    padding: 5px;
+    margin: 9px;
+    background-color: #007bff80;
+    border-radius: 4px;
+    text-align: end;
+}
+
+.btn a {
+
+    text-decoration: none;
+    color: black;
+}
+
+.btn2 {
+    all: unset;
+    cursor: pointer;
+    border: 1px solid rgb(0, 0, 0);
+    padding: 5px;
+    margin: 9px;
+    background-color: #00000023;
+    border-radius: 4px;
+    text-align: end;
+}

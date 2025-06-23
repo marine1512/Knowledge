@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}?v=1.0">
+{% endblock %}
+
+{% block title %}Confirmation requise{% endblock %}
+
+{% block body %}
+<h1>Veuillez vérifier votre e-mail</h1>
+<p>
+    Bienvenue ! Un e-mail de confirmation vous a été envoyé. Veuillez vérifier votre boîte mail.
+</p>
+<p>
+    Si vous ne recevez pas d'e-mail, vérifiez votre dossier spam ou cliquez sur <a href="{{ path('app_register') }}">Réessayer</a>.
+</p>
+{% endblock %}
