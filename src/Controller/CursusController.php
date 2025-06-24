@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Cursus;
+use App\Entity\Theme;
+use App\Repository\ThemeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -41,23 +43,40 @@ class CursusController extends AbstractController
      * @param EntityManagerInterface $entityManager The entity manager to persist the new cursus.
      * @return Response A redirect response to the cursus index page or the rendered form view.
      */
-    #[Route('/new', name: 'new_cursus', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $cursus = new Cursus();
+#[Route('/new', name: 'new_cursus', methods: ['GET', 'POST'])]
+public function new(Request $request, EntityManagerInterface $entityManager, ThemeRepository $themeRepository): Response
+{
+    $themeList = $themeRepository->findAll();
+    $cursus = new Cursus();
 
-        if ($request->isMethod('POST')) {
-            $cursus->setNom($request->request->get('nom'));
-        
+    if ($request->isMethod('POST')) {
+        $nom = $request->request->get('nom');
+        $prix = $request->request->get('prix');
+        $themeId = $request->request->get('cursus_id');
+
+        if ($nom && $prix && $themeId) {
+            $theme = $themeRepository->find($themeId);
+            if (!$theme) {
+                throw new \Exception('Thème introuvable ou invalide.');
+            }
+
+            $cursus->setNom($nom);
+            $cursus->setPrix((float)$prix); // Convertir en flottant si nécessaire
+            $cursus->setTheme($theme);
 
             $entityManager->persist($cursus);
             $entityManager->flush();
 
-            return $this->redirectToRoute('cursus');
+            return $this->redirectToRoute('cursus_index');
+        } else {
+            throw new \Exception('Toutes les informations doivent être fournies.');
         }
-
-        return $this->render('admin/cursus/new.html.twig');
     }
+
+    return $this->render('admin/cursus/new.html.twig', [
+        'themeList' => $themeList,
+    ]);
+}
 
     /**
      * Edits an existing cursus entry.
@@ -100,6 +119,6 @@ class CursusController extends AbstractController
         $entityManager->remove($cursus);
         $entityManager->flush();
 
-        return $this->redirectToRoute('cursus');
+        return $this->redirectToRoute('cursus_index');
     }
 }

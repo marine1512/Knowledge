@@ -13,6 +13,14 @@
 <form method="post">
     <label for="nom">Nom :</label>
     <input type="text" id="nom" name="nom" required>
+    <label for="prix">Prix :</label>
+    <input type="text" id="prix" name="prix" required>
+    <label for="cursus">Cursus :</label>
+    <select id="cursus" name="cursus_id" required>
+        {% for cursus in cursusList %}
+            <option value="{{ cursus.id }}">{{ cursus.nom }}</option>
+        {% endfor %}
+    </select>
     <button type="submit" class='btn'>Créer</button>
 </form>
 {% endblock %}

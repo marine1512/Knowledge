@@ -59,6 +59,7 @@ class Theme
      */
     #[ORM\OneToOne(mappedBy: 'theme', targetEntity: Certification::class, cascade: ['persist', 'remove'])]
     private ?Certification $certification = null;
+    
 
     /**
      * Theme constructor.

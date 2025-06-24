@@ -36,6 +36,9 @@ class Certification
     #[ORM\Column(type: "date")]
     private ?\DateTimeInterface $createdAt = null;
 
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'certifications')]
+    private Collection $users;
+
     /**
      * Certification constructor.
      * Initializes the createdAt property to the current date and time.

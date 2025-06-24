@@ -10,7 +10,7 @@
 {% block body %}
 <h1>Liste des lecons</h1>
 
-<a href="{{ path('new') }}" class='btn'>Créer une lecon</a>
+<a href="{{ path('new_lecon') }}" class='btn'>Créer une lecon</a>
 
 <table class='table'>
     <thead>
@@ -27,7 +27,7 @@
             <td>{{ lecon.nom }}</td>
             <td>
                 <a href="{{ path('edit_lecon', { id: lecon.id }) }}"class='btn'>Modifier</a>
-                <form method="post" action="{{ path('delete', { id: lecon.id }) }}" style="display:inline;">
+                <form method="post" action="{{ path('delete_lecon', { id: lecon.id }) }}" style="display:inline;">
                     <button type="submit" class='btn'>Supprimer</button>
                 </form>
             </td>

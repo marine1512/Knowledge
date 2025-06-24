@@ -6,12 +6,14 @@ use App\Entity\Lecon;
 use App\Entity\User;
 use App\Entity\UserPurchase;
 use App\Entity\Certification;
+use App\Entity\Cursus;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use App\Repository\CursusRepository;
 
 /**
  * Class LeconController
@@ -46,21 +48,40 @@ class LeconController extends AbstractController
      * @return Response A redirect response to the lesson index page or the rendered form view.
      */
     #[Route('/new', name: 'new_lecon', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, CursusRepository $cursusRepository): Response
     {
+        $cursusList = $cursusRepository->findAll();
         $lecon = new Lecon();
 
         if ($request->isMethod('POST')) {
             $lecon->setNom($request->request->get('nom'));
+            $lecon->setPrix($request->request->get('prix'));
+
+            $cursusId = $request->request->get('cursus_id');
+
+                    if ($cursusId) {
+            $cursus = $entityManager->getRepository(Cursus::class)->find($cursusId);
+            if ($cursus) {
+                $lecon->setCursus($cursus); // Lier le cursus à la leçon
+            } else {
+                // Gestion si le cursus n'existe pas
+                throw new \Exception('Cursus non trouvé.');
+            }
+        } else {
+            // Gestion si cursus_id n'est pas dans la requête
+            throw new \Exception('Cursus ID manquant.');
+        }
         
 
             $entityManager->persist($lecon);
             $entityManager->flush();
 
-            return $this->redirectToRoute('lecon');
+            return $this->redirectToRoute('lecon_index');
         }
 
-        return $this->render('admin/lecon/new.html.twig');
+        return $this->render('admin/lecon/new.html.twig', [
+        'cursusList' => $cursusList,
+    ]);
     }
 
     /**
@@ -83,7 +104,7 @@ class LeconController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('lecon');
+            return $this->redirectToRoute('lecon_index');
         }
 
         return $this->render('admin/lecon/edit.html.twig', [
@@ -104,7 +125,7 @@ class LeconController extends AbstractController
         $entityManager->remove($lecon);
         $entityManager->flush();
 
-        return $this->redirectToRoute('lecon');
+        return $this->redirectToRoute('lecon_index');
     }
 
     /**
