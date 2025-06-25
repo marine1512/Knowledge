@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\UserPurchase;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Entity\User;
 
 class UserPurchaseRepository extends ServiceEntityRepository
 {
