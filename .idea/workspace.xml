@@ -6,14 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7aa3e1d9-3644-44b8-bfb0-d6e53554e116" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CursusController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CursusController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/LeconController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LeconController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Certification.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Certification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Theme.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Theme.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/cursus/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/cursus/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/cursus/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/cursus/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/lecon/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/lecon/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/lecon/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/lecon/new.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
